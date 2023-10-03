@@ -12,7 +12,7 @@ The British Printed Images website is a digital library of print and book illust
  * Date
  * Technique
 
-Many of the above categories also have search modifying options, that allows finer-grained retreival. 
+Many of the above categories also have search modifying options, that allow finer-grained retreival. 
 
 ### Project Team
 Adam Morton, Newcastle University  ([adam.morton@newcastle.ac.uk](mailto:adam.morton@newcastle.ac.uk))  
