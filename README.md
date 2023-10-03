@@ -7,7 +7,8 @@ The British Printed Images website is a digital library of print and book illust
 
 ### Project Team
 Adam Morton, Newcastle University  ([adam.morton@newcastle.ac.uk](mailto:adam.morton@newcastle.ac.uk))  
-Becky Osselton, XY University  ([rebecca.osselton@newcastle.ac.uk](mailto:rebecca.osselton@example.com)) 
+Becky Osselton, Newcastle University  ([rebecca.osselton@newcastle.ac.uk](mailto:rebecca.osselton@example.com))
+ 
 Kings College Digital Lab (Paul Caton, Pamela Mellon, Florence Du Pre) 
 
 ### RSE Contact
