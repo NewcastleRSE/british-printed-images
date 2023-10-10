@@ -19,19 +19,34 @@ Newcastle University
 
 This section is intended to list the frameworks and tools you're using to develop this software. Please link to the home page or documentatation in each case.
 
-[Framework 1](https://something.com)  
-[Framework 2](https://something.com)  
-[Framework 3](https://something.com)  
+[Express](https://expressjs.com/)  
+[Tailwind](https://tailwindcss.com/)  
 
 ## Getting Started
 
+
 ### Prerequisites
+
+Node.js
+Tailwind
 
 ### Installation
 
+npm install
+
 ### Running Locally
 
+Create an .env file containing the following variables:
+
+DB_HOST=xxx
+DB_USER=xxx
+DB_PASS=xxx
+DB_NAME=xxx
+DB_PORT=xxx
+
 ### Running Tests
+
+Mocha/Chai
 
 ## Deployment
 
