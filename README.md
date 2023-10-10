@@ -17,13 +17,12 @@ Newcastle University
 
 ## Built With
 
-This section is intended to list the frameworks and tools you're using to develop this software. Please link to the home page or documentatation in each case.
-
 [Express](https://expressjs.com/)  
 [Tailwind](https://tailwindcss.com/)  
 
 ## Getting Started
 
+Use Node 18
 
 ### Prerequisites
 
@@ -38,15 +37,19 @@ npm install
 
 Create an .env file containing the following variables:
 
+```
 DB_HOST=xxx
 DB_USER=xxx
 DB_PASS=xxx
 DB_NAME=xxx
 DB_PORT=xxx
+```
 
 ### Running Tests
 
 Mocha/Chai
+
+`npm test`
 
 ## Deployment
 
