@@ -4,10 +4,6 @@ const { ProfilingIntegration } = require('@sentry/profiling-node');
 
 const db = require('./connect')
 
-// database connection tests
-app.get('/users', db.getUsers)
-app.get('/users/:id', db.getUserById)
-
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
@@ -58,7 +54,9 @@ app.use(
   })
 )
 
-
+// database connection tests
+app.get('/users', db.getUsers)
+app.get('/users/:id', db.getUserById)
 
 
 
