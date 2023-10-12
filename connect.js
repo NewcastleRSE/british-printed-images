@@ -9,6 +9,14 @@ const pool = new Pool({
   port: process.env.DB_PORT,
 })
 
+const connectToDB = async () => {
+
+  const client = await pool.connect();
+  client.release();
+
+  return true;
+}
+
 const getUsers = (request, response) => {
     pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
       if (error) {
@@ -32,5 +40,6 @@ const getUsers = (request, response) => {
 
   module.exports = {
     getUsers,
-    getUserById
+    getUserById,
+    connectToDB,
   }

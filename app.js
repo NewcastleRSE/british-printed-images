@@ -58,6 +58,8 @@ app.use(
 app.get('/users', db.getUsers)
 app.get('/users/:id', db.getUserById)
 
+const connection = db.connectToDB
+
 
 
 app.listen(port, () => {
@@ -68,3 +70,5 @@ app.listen(port, () => {
 app.get("/debug-sentry", function mainHandler(req, res) {
   throw new Error("My first Sentry error!");
 });
+
+module.exports = app;
