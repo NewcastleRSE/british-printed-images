@@ -1,45 +1,32 @@
 require('dotenv').config()
 
-const Pool = require('pg').Pool
-const pool = new Pool({
+var mysql = require('mysql2');
+
+var con = mysql.createConnection({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
   database: process.env.DB_NAME,
   password: process.env.DB_PASS,
   port: process.env.DB_PORT,
-})
+});
 
-const connectToDB = async () => {
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
 
-  const client = await pool.connect();
-  client.release();
 
-  return true;
-}
-
-const getUsers = (request, response) => {
-    pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
+const getBpiCat = (request, response) => {
+    con.query('SELECT * FROM bpi_cat ORDER BY BPI_catKey ASC limit 10', (error, results, fields) => {
       if (error) {
         throw error
       }
-      response.status(200).json(results.rows)
+      response.status(200);
+      console.log(results);
     })
   }
 
-  const getUserById = (request, response) => {
-    const id = parseInt(request.params.id)
-  
-    pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
-      if (error) {
-        throw error
-      }
-      response.status(200).json(results.rows)
-    })
-  }
-  
 
   module.exports = {
-    getUsers,
-    getUserById,
-    connectToDB,
+    getBpiCat,
   }

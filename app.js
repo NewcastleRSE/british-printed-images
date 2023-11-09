@@ -37,9 +37,9 @@ app.get('/', (req, res) => {
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
+/*app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
-});
+}); */
 
 // The error handler must be registered before any other error middleware and after all controllers
 app.use(Sentry.Handlers.errorHandler());
@@ -60,8 +60,8 @@ app.use(
 )
 
 // database connection tests
-app.get('/users', db.getUsers)
-app.get('/users/:id', db.getUserById)
+app.get('/bpi_cat', db.getBpiCat)
+// app.get('/users/:id', db.getUserById)
 
 const connection = db.connectToDB
 
