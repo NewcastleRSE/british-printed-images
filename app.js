@@ -63,7 +63,7 @@ const connection = db.connectToDB
 
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`BPI express app listening on port ${port}`)
 })
 
 // test function to check if sentry works
