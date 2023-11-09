@@ -45,6 +45,8 @@ DB_NAME=xxx
 DB_PORT=xxx
 ```
 
+Start the server running with `node app.js`
+
 ### Running Tests
 
 Mocha/Chai

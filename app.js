@@ -59,4 +59,20 @@ app.use(
   })
 )
 
+// database connection tests
+app.get('/users', db.getUsers)
+app.get('/users/:id', db.getUserById)
+
+const connection = db.connectToDB
+
+
+app.listen(port, () => {
+  console.log(`BPI express app listening on port ${port}`)
+})
+
+// test function to check if sentry works
+app.get("/debug-sentry", function mainHandler(req, res) {
+  throw new Error("My first Sentry error!");
+});
+
 module.exports = app;
