@@ -1,14 +1,11 @@
 
 const Sentry = require('@sentry/node');
 const { ProfilingIntegration } = require('@sentry/profiling-node');
-
+const path = require('path');
 const db = require('./connect')
-
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const port = 3000
-
 
 Sentry.init({
   dsn: 'https://ac3dcfad4680f5a7f636635be8f21708@o1080315.ingest.sentry.io/4506032524820480',
@@ -31,9 +28,17 @@ app.use(Sentry.Handlers.requestHandler());
 // TracingHandler creates a trace for every incoming request
 app.use(Sentry.Handlers.tracingHandler());
 
-// All your controllers should live here
-app.get("/", function rootHandler(req, res) {
-  res.end("Hello world!");
+// Allow app to server static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
 });
 
 // The error handler must be registered before any other error middleware and after all controllers
@@ -59,7 +64,6 @@ app.get('/users', db.getUsers)
 app.get('/users/:id', db.getUserById)
 
 const connection = db.connectToDB
-
 
 
 app.listen(port, () => {
