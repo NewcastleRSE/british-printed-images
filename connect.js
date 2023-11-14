@@ -15,14 +15,22 @@ con.connect(function(err) {
   console.log("Connected!");
 });
 
-
-const getBpiCat = (request, response) => {
+/*const getBpiCat = (request, response) => {
     con.query('SELECT * FROM bpi_cat ORDER BY BPI_catKey ASC limit 10', (error, results, fields) => {
       if (error) {
         throw error
       }
-      response.status(200);
-      console.log(results);
+      response.status(200)
+      return results;
+    })
+  } */
+
+  const getBpiCat = (request, response) => {
+    con.query('SELECT * FROM bpi_cat ORDER BY BPI_catKey ASC limit 10', (error, results) => {
+      if (error) {
+        return response.json({ status: "ERROR", error });
+      }
+      return response.json(results);
     })
   }
 

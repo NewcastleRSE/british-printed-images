@@ -4,6 +4,7 @@ const { ProfilingIntegration } = require('@sentry/profiling-node');
 const path = require('path');
 const db = require('./connect')
 const express = require('express')
+const cors = require('cors');
 const bodyParser = require('body-parser')
 const app = express()
 
@@ -30,6 +31,10 @@ app.use(Sentry.Handlers.tracingHandler());
 
 // Allow app to server static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
+
+// enables all CORS requests
+app.use(cors())
+
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
@@ -62,6 +67,7 @@ app.use(
 // database connection tests
 app.get('/bpi_cat', db.getBpiCat)
 // app.get('/users/:id', db.getUserById)
+
 
 const connection = db.connectToDB
 
