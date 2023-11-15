@@ -8,6 +8,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser')
 const app = express()
 
+// Sentry stuff
+
 Sentry.init({
   dsn: 'https://ac3dcfad4680f5a7f636635be8f21708@o1080315.ingest.sentry.io/4506032524820480',
   integrations: [
@@ -29,23 +31,6 @@ app.use(Sentry.Handlers.requestHandler());
 // TracingHandler creates a trace for every incoming request
 app.use(Sentry.Handlers.tracingHandler());
 
-// Allow app to server static files from the public directory
-app.use(express.static(path.join(__dirname, 'public')));
-
-// enables all CORS requests
-app.use(cors())
-
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
-});
-
-const port = process.env.PORT || 3000;
-
-/*app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-}); */
-
 // The error handler must be registered before any other error middleware and after all controllers
 app.use(Sentry.Handlers.errorHandler());
 
@@ -57,6 +42,22 @@ app.use(function onError(err, req, res, next) {
   res.end(res.sentry + "\n");
 });
 
+// test function to check if sentry works
+app.get("/debug-sentry", function mainHandler(req, res) {
+  throw new Error("My first Sentry error!");
+});
+
+///////////////////////////////////////////////////////////////
+
+// Public folder config
+
+// Allow app to server static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// enables all CORS requests
+app.use(cors())
+
+// general config
 app.use(bodyParser.json())
 app.use(
   bodyParser.urlencoded({
@@ -64,21 +65,22 @@ app.use(
   })
 )
 
-// database connection tests
-app.get('/bpi_cat', db.getBpiCat)
-// app.get('/users/:id', db.getUserById)
-
-
-const connection = db.connectToDB
-
+// database commection
+const port = process.env.PORT || 3000;
+const connection = db.connectToDB;
 
 app.listen(port, () => {
   console.log(`BPI express app listening on port ${port}`)
 })
 
-// test function to check if sentry works
-app.get("/debug-sentry", function mainHandler(req, res) {
-  throw new Error("My first Sentry error!");
+// api functions
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
 });
+
+app.get('/api/bpi_cat', db.getBpiCat)
+app.get('/api/bpi_cat/:id', db.getBpiCatItem);
+
 
 module.exports = app;
