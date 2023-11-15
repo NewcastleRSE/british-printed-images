@@ -15,26 +15,29 @@ con.connect(function(err) {
   console.log("Connected!");
 });
 
-/*const getBpiCat = (request, response) => {
-    con.query('SELECT * FROM bpi_cat ORDER BY BPI_catKey ASC limit 10', (error, results, fields) => {
-      if (error) {
-        throw error
-      }
-      response.status(200)
-      return results;
-    })
-  } */
+// get items limit 10
+const getBpiCat = (request, response) => {
+  con.query('SELECT * FROM bpi_cat ORDER BY BPI_catKey ASC limit 10', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  })
+}
 
-  const getBpiCat = (request, response) => {
-    con.query('SELECT * FROM bpi_cat ORDER BY BPI_catKey ASC limit 10', (error, results) => {
-      if (error) {
-        return response.json({ status: "ERROR", error });
-      }
-      return response.json(results);
-    })
-  }
+
+// get single item
+const getBpiCatItem = (request, response) => {
+  con.query('SELECT * FROM bpi_cat where BPI_catKey = ?', request.params.id, (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+} 
 
 
   module.exports = {
     getBpiCat,
+    getBpiCatItem
   }
