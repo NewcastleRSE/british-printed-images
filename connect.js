@@ -36,8 +36,20 @@ const getBpiCatItem = (request, response) => {
   }) 
 } 
 
+// call stored procedure
+
+const getImageDetails = (request, response) => {
+  con.query('call sp_GetImageDetails(' + request.params.id + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
 
   module.exports = {
     getBpiCat,
-    getBpiCatItem
+    getBpiCatItem,
+    getImageDetails
   }

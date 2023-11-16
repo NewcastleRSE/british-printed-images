@@ -81,6 +81,7 @@ app.get('/', (req, res) => {
 
 app.get('/api/bpi_cat', db.getBpiCat)
 app.get('/api/bpi_cat/:id', db.getBpiCatItem);
+app.get('/api/image_details/:id', db.getImageDetails);
 
 
 module.exports = app;
