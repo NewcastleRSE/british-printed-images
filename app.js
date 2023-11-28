@@ -83,6 +83,7 @@ app.get('/api/bpi_cat', db.getBpiCat)
 app.get('/api/bpi_cat/:id', db.getBpiCatItem);
 app.get('/api/image_details/:id', db.getImageDetails);
 app.get('/api/image_producers/:id', db.getImageProducers);
+app.get('/api/image_schools/:id', db.getImageSchools);
 
 
 module.exports = app;
