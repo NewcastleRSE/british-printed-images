@@ -47,6 +47,17 @@ const getImageDetails = (request, response) => {
   }) 
 }
 
+// call stored procedure to get schools
+
+const getImageInscription = (request, response) => {
+  con.query('call sp_GetImageInscription(' + request.params.id + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
 // call stored procedure to get producers
 
 const getImageProducers = (request, response) => {
@@ -74,6 +85,7 @@ const getImageSchools = (request, response) => {
     getBpiCat,
     getBpiCatItem,
     getImageDetails,
+    getImageInscription,
     getImageProducers,
     getImageSchools
   }
