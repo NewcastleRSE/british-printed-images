@@ -80,6 +80,25 @@ const getImageSchools = (request, response) => {
   }) 
 }
 
+const getImageSubjects = (request, response) => {
+  con.query('call sp_GetImageSubjects(' + request.params.id + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
+const getImageProductionPlace = (request, response) => {
+  con.query('call sp_GetImageProductionPlace(' + request.params.id + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
+
 
   module.exports = {
     getBpiCat,
@@ -87,5 +106,7 @@ const getImageSchools = (request, response) => {
     getImageDetails,
     getImageInscription,
     getImageProducers,
-    getImageSchools
+    getImageSchools,
+    getImageSubjects,
+    getImageProductionPlace
   }

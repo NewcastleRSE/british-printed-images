@@ -85,6 +85,8 @@ app.get('/api/image_details/:id', db.getImageDetails);
 app.get('/api/image_inscription/:id', db.getImageInscription);
 app.get('/api/image_producers/:id', db.getImageProducers);
 app.get('/api/image_schools/:id', db.getImageSchools);
+app.get('/api/image_production_place/:id', db.getImageProductionPlace);
+app.get('/api/image_subjects/:id', db.getImageSubjects);
 
 
 module.exports = app;
