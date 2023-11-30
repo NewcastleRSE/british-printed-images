@@ -88,6 +88,8 @@ app.get('/api/image_schools/:id', db.getImageSchools);
 app.get('/api/image_production_place/:id', db.getImageProductionPlace);
 app.get('/api/image_subjects/:id', db.getImageSubjects);
 app.get('/api/biblio_ref/:id', db.getBiblioRef);
+app.get('/api/image_dimensions/:id', db.getImageDimensions);
+
 
 
 
