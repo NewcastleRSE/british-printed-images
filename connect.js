@@ -99,14 +99,23 @@ const getImageProductionPlace = (request, response) => {
 }
 
 
+const getBiblioRef = (request, response) => {
+  con.query('call sp_GetBiblioRef(' + request.params.id + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
 
-  module.exports = {
-    getBpiCat,
-    getBpiCatItem,
-    getImageDetails,
-    getImageInscription,
-    getImageProducers,
-    getImageSchools,
-    getImageSubjects,
-    getImageProductionPlace
-  }
+module.exports = {
+  getBpiCat,
+  getBpiCatItem,
+  getImageDetails,
+  getImageInscription,
+  getImageProducers,
+  getImageSchools,
+  getImageSubjects,
+  getImageProductionPlace,
+  getBiblioRef
+}
