@@ -89,8 +89,7 @@ app.get('/api/image_production_place/:id', db.getImageProductionPlace);
 app.get('/api/image_subjects/:id', db.getImageSubjects);
 app.get('/api/biblio_ref/:id', db.getBiblioRef);
 app.get('/api/image_dimensions/:id', db.getImageDimensions);
-
-
+app.get('/api/image_assoc_name/:id', db.getImageAssocName);
 
 
 module.exports = app;

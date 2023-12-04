@@ -117,6 +117,15 @@ const getImageDimensions = (request, response) => {
   }) 
 }
 
+const getImageAssocName = (request, response) => {
+  con.query('call sp_GetImageAssocName(' + request.params.id + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
 module.exports = {
   getBpiCat,
   getBpiCatItem,
@@ -127,5 +136,6 @@ module.exports = {
   getImageSubjects,
   getImageProductionPlace,
   getBiblioRef,
-  getImageDimensions
+  getImageDimensions,
+  getImageAssocName
 }
