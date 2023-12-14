@@ -67,8 +67,7 @@ app.use(
 
 // database connection
 const port = process.env.PORT || 3000;
-const connection = db.connectToDB;
-const closeConnection = db.closeConnection;
+const closeConnection = db.con;
 
 const server = app.listen(port, () => {
   console.log(`App listening on port ${port}`)
@@ -99,6 +98,5 @@ app.get('/api/image_assoc_name/:id', db.getImageAssocName);
 module.exports = {
   app,
   server,
-  connection,
   closeConnection
 } 

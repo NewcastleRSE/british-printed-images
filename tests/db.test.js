@@ -37,7 +37,7 @@ describe("Test case for bpi1700 database", () => {
 
 afterAll(async () => {
   await server.close();
-  await closeConnection;
+  await closeConnection.end();
 });
 
 

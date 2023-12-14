@@ -10,11 +10,10 @@ var con = mysql.createConnection({
   port: process.env.DB_PORT,
 });
 
-// connect to database
+// connect to database 
 con.connect(function(err) {
   if (err) throw err;
 });
-
 
 
 // get items limit 10
@@ -140,5 +139,6 @@ module.exports = {
   getImageProductionPlace,
   getBiblioRef,
   getImageDimensions,
-  getImageAssocName
+  getImageAssocName,
+  con
 }
