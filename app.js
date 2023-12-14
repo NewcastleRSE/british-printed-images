@@ -65,20 +65,24 @@ app.use(
   })
 )
 
-// database commection
+// database connection
 const port = process.env.PORT || 3000;
 const connection = db.connectToDB;
+const closeConnection = db.closeConnection;
 
-app.listen(port, () => {
-  console.log(`BPI express app listening on port ${port}`)
-})
+const server = app.listen(port, () => {
+  console.log(`App listening on port ${port}`)
+}) 
 
 // api functions
 
+// get the home page
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
+
+// api request call functions in the imported connect.js file
 app.get('/api/bpi_cat', db.getBpiCat)
 app.get('/api/bpi_cat/:id', db.getBpiCatItem);
 app.get('/api/image_details/:id', db.getImageDetails);
@@ -92,4 +96,9 @@ app.get('/api/image_dimensions/:id', db.getImageDimensions);
 app.get('/api/image_assoc_name/:id', db.getImageAssocName);
 
 
-module.exports = app;
+module.exports = {
+  app,
+  server,
+  connection,
+  closeConnection
+} 

@@ -49,7 +49,7 @@ Start the server running with `node app.js`
 
 ### Running Tests
 
-Mocha/Chai
+Jest has been used as the test library. Execute database tests with the command below.
 
 `npm test`
 

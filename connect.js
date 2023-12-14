@@ -10,10 +10,12 @@ var con = mysql.createConnection({
   port: process.env.DB_PORT,
 });
 
+// connect to database
 con.connect(function(err) {
   if (err) throw err;
-  console.log("Connected!");
 });
+
+
 
 // get items limit 10
 const getBpiCat = (request, response) => {
@@ -125,6 +127,7 @@ const getImageAssocName = (request, response) => {
     return response.json(results);
   }) 
 }
+
 
 module.exports = {
   getBpiCat,

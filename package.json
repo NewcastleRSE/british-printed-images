@@ -4,7 +4,8 @@
   "description": "Rebuild of existing website",
   "main": "app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage --detectOpenHandles",
+    "start": "node app.js" 
   },
   "repository": {
     "type": "git",
