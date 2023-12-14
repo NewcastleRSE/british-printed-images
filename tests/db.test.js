@@ -47,6 +47,87 @@ const image_details500 = [
   }
 ]
 
+const image_inscription500 = [
+  [
+      {
+          "mus_inscription_content": "With two columns of four verses, one in Latin by Hugo Holland, the other in English by George Chapman, and mottoes in the funeral canopy.The second state has an additional title at top 'The Herse and Representacion of our late Highe and Mighty Henry Prince of Wales &c' and names below 'Guli Holus sculp' and 'Lond print for Jo Budge'."
+      }
+  ],
+  {
+      "fieldCount": 0,
+      "affectedRows": 0,
+      "insertId": 0,
+      "info": "",
+      "serverStatus": 34,
+      "warningStatus": 0,
+      "changedRows": 0
+  }
+]
+
+const image_dimensions500 = [
+  [
+      {
+          "mus_dimension_measurement_unit": "mm",
+          "mus_dimension": "H",
+          "mus_dimension_value": "320.00"
+      },
+      {
+          "mus_dimension_measurement_unit": "mm",
+          "mus_dimension": "W",
+          "mus_dimension_value": "228.00"
+      }
+  ],
+  {
+      "fieldCount": 0,
+      "affectedRows": 0,
+      "insertId": 0,
+      "info": "",
+      "serverStatus": 34,
+      "warningStatus": 0,
+      "changedRows": 0
+  }
+]
+const image_producers500 = [
+  [
+      {
+          "mus_object_production_person": "Hole, William (1607 fl-1624 died)",
+          "al_production_person_assDesc": "Print made by"
+      }
+  ],
+  {
+      "fieldCount": 0,
+      "affectedRows": 0,
+      "insertId": 0,
+      "info": "",
+      "serverStatus": 2,
+      "warningStatus": 0,
+      "changedRows": 0
+  }
+]
+
+const image_schools500 = [
+  [
+      {
+          "bm_alias_schoolKey": 531,
+          "bm_school": "British",
+          "bm_school_th_h": "11.7",
+          "bm_school_th_i": "x17177",
+          "bm_school_com": "",
+          "BPI_catKey": 500,
+          "al_schoolKey": 2
+      }
+  ],
+  {
+      "fieldCount": 0,
+      "affectedRows": 0,
+      "insertId": 0,
+      "info": "",
+      "serverStatus": 34,
+      "warningStatus": 0,
+      "changedRows": 0
+  }
+]
+
 
 describe("Test case for bpi1700 database", () => {
   it("test case for getting data from bpi cat number", async () => {
@@ -65,6 +146,43 @@ describe("Test case for bpi1700 database", () => {
   ); 
 });
 
+
+describe("Test case for bpi1700 database", () => {
+  it("test case for image inscription from bpi cat number", async () => {
+    const response = await request(app).get("/api/image_inscription/500");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(image_inscription500);
+  }
+  ); 
+});
+
+
+describe("Test case for bpi1700 database", () => {
+  it("test case for image dimensions from bpi cat number", async () => {
+    const response = await request(app).get("/api/image_dimensions/500");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(image_dimensions500);
+  }
+  ); 
+});
+
+describe("Test case for bpi1700 database", () => {
+  it("test case for image producers from bpi cat number", async () => {
+    const response = await request(app).get("/api/image_producers/500");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(image_producers500);
+  }
+  ); 
+});
+
+describe("Test case for bpi1700 database", () => {
+  it("test case for image schools from bpi cat number", async () => {
+    const response = await request(app).get("/api/image_schools/500");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(image_schools500);
+  }
+  ); 
+});
 
 // close things off after the tests have finished
 afterAll(async () => {
