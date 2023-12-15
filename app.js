@@ -1,18 +1,14 @@
 
 const Sentry = require('@sentry/node');
 const { ProfilingIntegration } = require('@sentry/profiling-node');
-
+const path = require('path');
 const db = require('./connect')
-
-// database connection tests
-app.get('/users', db.getUsers)
-app.get('/users/:id', db.getUserById)
-
 const express = require('express')
+const cors = require('cors');
 const bodyParser = require('body-parser')
 const app = express()
-const port = 3000
 
+// Sentry stuff
 
 Sentry.init({
   dsn: 'https://ac3dcfad4680f5a7f636635be8f21708@o1080315.ingest.sentry.io/4506032524820480',
@@ -35,11 +31,6 @@ app.use(Sentry.Handlers.requestHandler());
 // TracingHandler creates a trace for every incoming request
 app.use(Sentry.Handlers.tracingHandler());
 
-// All your controllers should live here
-app.get("/", function rootHandler(req, res) {
-  res.end("Hello world!");
-});
-
 // The error handler must be registered before any other error middleware and after all controllers
 app.use(Sentry.Handlers.errorHandler());
 
@@ -51,6 +42,22 @@ app.use(function onError(err, req, res, next) {
   res.end(res.sentry + "\n");
 });
 
+// test function to check if sentry works
+app.get("/debug-sentry", function mainHandler(req, res) {
+  throw new Error("My first Sentry error!");
+});
+
+///////////////////////////////////////////////////////////////
+
+// Public folder config
+
+// Allow app to server static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// enables all CORS requests
+app.use(cors())
+
+// general config
 app.use(bodyParser.json())
 app.use(
   bodyParser.urlencoded({
@@ -58,15 +65,40 @@ app.use(
   })
 )
 
+// database connection
+const port = process.env.PORT || 3000;
+const closeConnection = db.con;
 
+const server = app.listen(port, () => {
+  console.log(`App listening on port ${port}`)
+}) 
 
+// api functions
 
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
-
-// test function to check if sentry works
-app.get("/debug-sentry", function mainHandler(req, res) {
-  throw new Error("My first Sentry error!");
+// get the home page
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
 });
+
+
+// api request call functions in the imported connect.js file
+app.get('/api/bpi_cat', db.getBpiCat)
+app.get('/api/bpi_cat/:id', db.getBpiCatItem);
+app.get('/api/image_details/:id', db.getImageDetails);
+app.get('/api/image_inscription/:id', db.getImageInscription);
+app.get('/api/image_producers/:id', db.getImageProducers);
+app.get('/api/image_schools/:id', db.getImageSchools);
+app.get('/api/image_production_place/:id', db.getImageProductionPlace);
+app.get('/api/image_subjects/:id', db.getImageSubjects);
+app.get('/api/biblio_ref/:id', db.getBiblioRef);
+app.get('/api/image_dimensions/:id', db.getImageDimensions);
+app.get('/api/image_assoc_name/:id', db.getImageAssocName);
+app.get('/api/image_subject_search/:item', db.getImagesBySubject);
+app.get('/api/image_event_search/:item', db.getImagesByEvent);
+
+
+module.exports = {
+  app,
+  server,
+  closeConnection
+} 
