@@ -127,6 +127,23 @@ const getImageAssocName = (request, response) => {
   }) 
 }
 
+const getImagesBySubject = (request, response) => {
+  con.query('call sp_GetImagesBySubject('+ "'" + request.params.item + "'" + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
+const getImagesByEvent = (request, response) => {
+  con.query('call sp_GetImagesByEvent('+ "'" + request.params.item + "'" + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
 
 module.exports = {
   getBpiCat,
@@ -140,5 +157,7 @@ module.exports = {
   getBiblioRef,
   getImageDimensions,
   getImageAssocName,
+  getImagesBySubject,
+  getImagesByEvent,
   con
 }
