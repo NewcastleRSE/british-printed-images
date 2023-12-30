@@ -145,6 +145,15 @@ const getImagesByEvent = (request, response) => {
   }) 
 }
 
+const getAllImageDetails = (request, response) => {
+  con.query('call sp_GetAllImageDetails(' + request.params.id + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
 module.exports = {
   getBpiCat,
   getBpiCatItem,
@@ -159,5 +168,6 @@ module.exports = {
   getImageAssocName,
   getImagesBySubject,
   getImagesByEvent,
+  getAllImageDetails,
   con
 }

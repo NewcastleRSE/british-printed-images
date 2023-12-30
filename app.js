@@ -95,6 +95,8 @@ app.get('/api/image_dimensions/:id', db.getImageDimensions);
 app.get('/api/image_assoc_name/:id', db.getImageAssocName);
 app.get('/api/image_subject_search/:item', db.getImagesBySubject);
 app.get('/api/image_event_search/:item', db.getImagesByEvent);
+app.get('/api/all_image_details/:id', db.getAllImageDetails);
+
 
 
 module.exports = {
