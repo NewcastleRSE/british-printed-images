@@ -136,6 +136,16 @@ const getImagesBySubject = (request, response) => {
   }) 
 }
 
+
+const getImagesBySubjectIndex = (request, response) => {
+  con.query('call sp_GetImagesBySubject('+ "'" + request.params.item + "'" + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
 const getImagesByEvent = (request, response) => {
   con.query('call sp_GetImagesByEvent('+ "'" + request.params.item + "'" + ')', (error, results) => {
     if (error) {
@@ -167,6 +177,7 @@ module.exports = {
   getImageDimensions,
   getImageAssocName,
   getImagesBySubject,
+  getImagesBySubjectIndex,
   getImagesByEvent,
   getAllImageDetails,
   con
