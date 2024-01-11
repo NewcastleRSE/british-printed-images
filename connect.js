@@ -99,6 +99,15 @@ const getImageProductionPlace = (request, response) => {
   }) 
 }
 
+const getImageComments = (request, response) => {
+  con.query('call sp_GetImageComments(' + request.params.id + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
 
 const getBiblioRef = (request, response) => {
   con.query('call sp_GetBiblioRef(' + request.params.id + ')', (error, results) => {
@@ -173,6 +182,7 @@ module.exports = {
   getImageSchools,
   getImageSubjects,
   getImageProductionPlace,
+  getImageComments,
   getBiblioRef,
   getImageDimensions,
   getImageAssocName,
