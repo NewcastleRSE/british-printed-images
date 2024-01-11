@@ -62,7 +62,7 @@ const getImageInscription = (request, response) => {
 // call stored procedure to get producers
 
 const getImageProducers = (request, response) => {
-  con.query('call sp_GetProducers(' + request.params.id + ')', (error, results) => {
+  con.query('call sp_GetImageProducers(' + request.params.id + ')', (error, results) => {
     if (error) {
       return response.json({ status: "ERROR", error });
     }
