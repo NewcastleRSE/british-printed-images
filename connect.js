@@ -164,6 +164,24 @@ const getImagesByEvent = (request, response) => {
   }) 
 }
 
+const getImagesByPerson = (request, response) => {
+  con.query('call sp_GetImagesByPerson('+ "'" + request.params.item + "'" + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
+const getImagesByProducer = (request, response) => {
+  con.query('call sp_GetImagesByProducer('+ "'" + request.params.item + "'" + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
 const getAllImageDetails = (request, response) => {
   con.query('call sp_GetAllImageDetails(' + request.params.id + ')', (error, results) => {
     if (error) {
@@ -189,6 +207,8 @@ module.exports = {
   getImagesBySubject,
   getImagesBySubjectIndex,
   getImagesByEvent,
+  getImagesByPerson,
+  getImagesByProducer,
   getAllImageDetails,
   con
 }
