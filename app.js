@@ -93,7 +93,7 @@ app.get('/api/image_comments/:id', db.getImageComments);
 app.get('/api/image_subjects/:id', db.getImageSubjects);
 app.get('/api/biblio_ref/:id', db.getBiblioRef);
 app.get('/api/image_dimensions/:id', db.getImageDimensions);
-app.get('/api/image_assoc_names/:id', db.getImageAssocName);
+app.get('/api/image_assoc_names/:id', db.getImageAssocNames);
 app.get('/api/image_subject_search/:item', db.getImagesBySubject);
 app.get('/api/image_subject_search_by_index/:item', db.getImagesBySubjectIndex);
 app.get('/api/image_event_search/:item', db.getImagesByEvent);
