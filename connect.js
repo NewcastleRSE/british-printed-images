@@ -136,6 +136,15 @@ const getImageAssocNames = (request, response) => {
   }) 
 }
 
+const getImageAssocTitles = (request, response) => {
+  con.query('call sp_GetImageAssocTitles(' + request.params.id + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
 const getImagesBySubject = (request, response) => {
   con.query('call sp_GetImagesBySubject('+ "'" + request.params.item + "'" + ')', (error, results) => {
     if (error) {
@@ -204,6 +213,7 @@ module.exports = {
   getBiblioRef,
   getImageDimensions,
   getImageAssocNames,
+  getImageAssocTitles,
   getImagesBySubject,
   getImagesBySubjectIndex,
   getImagesByEvent,
