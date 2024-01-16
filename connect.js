@@ -154,9 +154,8 @@ const getImagesBySubject = (request, response) => {
   }) 
 }
 
-
 const getImagesBySubjectIndex = (request, response) => {
-  con.query('call sp_GetImagesBySubject('+ "'" + request.params.item + "'" + ')', (error, results) => {
+  con.query('call sp_GetImagesBySubjectIndex('+ "'" + request.params.item + "'" + ')', (error, results) => {
     if (error) {
       return response.json({ status: "ERROR", error });
     }
