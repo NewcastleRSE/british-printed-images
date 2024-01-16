@@ -379,7 +379,7 @@ const image_subject_search_by_index = [
     {
       "BPI_catKey": null,
     },          
-  ],
+  ],  
   {
     "fieldCount": 0,
     "affectedRows": 0,
@@ -388,7 +388,7 @@ const image_subject_search_by_index = [
     "serverStatus": 34,
     "warningStatus": 0,
     "changedRows": 0
-}
+  }
 ]
 
 const image_event_search = [
@@ -422,7 +422,7 @@ const image_event_search = [
     "serverStatus": 34,
     "warningStatus": 0,
     "changedRows": 0
-}
+  }
 ]
 
 const image_person_search = [
@@ -466,7 +466,7 @@ const image_producer_search = [
     "serverStatus": 34,
     "warningStatus": 0,
     "changedRows": 0
-}
+  }
 ]
 
 // tests
@@ -488,7 +488,6 @@ describe("Test case for bpi1700 database", () => {
   ); 
 });
 
-
 describe("Test case for bpi1700 database", () => {
   it("test case for image inscription from bpi cat number", async () => {
     const response = await request(app).get("/api/image_inscription/500");
@@ -497,7 +496,6 @@ describe("Test case for bpi1700 database", () => {
   }
   ); 
 });
-
 
 describe("Test case for bpi1700 database", () => {
   it("test case for image dimensions from bpi cat number", async () => {
@@ -598,7 +596,6 @@ describe("Test case for bpi1700 database", () => {
   ); 
 });
 
-
 describe("Test case for bpi1700 database", () => {
   it("test case for image subject search by index", async () => {
     const response = await request(app).get("/api/image_subject_search_by_index/unicorn");
@@ -634,7 +631,6 @@ describe("Test case for bpi1700 database", () => {
   }
   ); 
 });
-
 
 // close things off after the tests have finished
 afterAll(async () => {
