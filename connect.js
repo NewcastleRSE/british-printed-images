@@ -199,6 +199,15 @@ const getAllImageDetails = (request, response) => {
   }) 
 }
 
+const getImageLocation = (request, response) => {
+  con.query('call sp_GetImageLocation(' + request.params.id + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
 module.exports = {
   getBpiCat,
   getBpiCatItem,
@@ -219,5 +228,6 @@ module.exports = {
   getImagesByPerson,
   getImagesByProducer,
   getAllImageDetails,
+  getImageLocation,
   con
 }
