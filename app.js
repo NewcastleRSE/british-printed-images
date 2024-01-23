@@ -82,6 +82,7 @@ app.get('/', (req, res) => {
 
 
 // api request call functions in the imported connect.js file
+// takes int value 'id'
 app.get('/api/bpi_cat', db.getBpiCat)
 app.get('/api/bpi_cat/:id', db.getBpiCatItem);
 app.get('/api/image_details/:id', db.getImageDetails);
@@ -89,12 +90,22 @@ app.get('/api/image_inscription/:id', db.getImageInscription);
 app.get('/api/image_producers/:id', db.getImageProducers);
 app.get('/api/image_schools/:id', db.getImageSchools);
 app.get('/api/image_production_place/:id', db.getImageProductionPlace);
+app.get('/api/image_comments/:id', db.getImageComments);
 app.get('/api/image_subjects/:id', db.getImageSubjects);
 app.get('/api/biblio_ref/:id', db.getBiblioRef);
 app.get('/api/image_dimensions/:id', db.getImageDimensions);
-app.get('/api/image_assoc_name/:id', db.getImageAssocName);
+app.get('/api/image_assoc_names/:id', db.getImageAssocNames);
+app.get('/api/image_assoc_titles/:id', db.getImageAssocTitles);
+app.get('/api/all_image_details/:id', db.getAllImageDetails);
+app.get('/api/image_location/:id', db.getImageLocation);
+// takes string value 'item'
 app.get('/api/image_subject_search/:item', db.getImagesBySubject);
+app.get('/api/image_subject_search_by_index/:item', db.getImagesBySubjectIndex);
 app.get('/api/image_event_search/:item', db.getImagesByEvent);
+app.get('/api/image_person_search/:item', db.getImagesByPerson);
+app.get('/api/image_producer_search/:item', db.getImagesByProducer);
+
+
 
 
 module.exports = {
