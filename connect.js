@@ -164,7 +164,7 @@ const getImagesBySubjectIndex = (request, response) => {
 }
 
 const getImagesBySubjectIndexDate = (request, response) => {
-  con.query('call sp_GetImagesBySubjectIndex('+ "'" + request.params.item + "','" + request.params.min + "','" + request.params.max + "'" + ')', (error, results) => {
+  con.query('call sp_GetImagesBySubjectIndexDate('+ "'" + request.params.item + "','" + request.params.min + "','" + request.params.max + "'" + ')', (error, results) => {
     if (error) {
       return response.json({ status: "ERROR", error });
     }
@@ -173,7 +173,7 @@ const getImagesBySubjectIndexDate = (request, response) => {
 }
 
 const getImagesBySubjectDate = (request, response) => {
-  con.query('call sp_GetImagesBySubject('+ "'" + request.params.item + "','" +  request.params.min + "','" + request.params.max +  "'" + ')', (error, results) => {
+  con.query('call sp_GetImagesBySubjectDate('+ "'" + request.params.item + "','" +  request.params.min + "','" + request.params.max +  "'" + ')', (error, results) => {
     if (error) {
       return response.json({ status: "ERROR", error });
     }
