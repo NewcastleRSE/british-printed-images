@@ -99,8 +99,8 @@ app.get('/api/image_assoc_titles/:id', db.getImageAssocTitles);
 app.get('/api/all_image_details/:id', db.getAllImageDetails);
 app.get('/api/image_location/:id', db.getImageLocation);
 // takes string value 'item'
-app.get('/api/image_subject_search/:item/:min/:max', db.getImagesBySubjectDate);
-app.get('/api/image_subject_search_by_index/:item/:min/:max', db.getImagesBySubjectIndex);
+app.get('/api/image_subject_search_date/:item/:min/:max', db.getImagesBySubjectDate);
+app.get('/api/image_subject_search_by_index_date/:item/:min/:max', db.getImagesBySubjectIndexDate);
 app.get('/api/image_subject_search/:item', db.getImagesBySubject);
 app.get('/api/image_subject_search_by_index/:item', db.getImagesBySubjectIndex);
 app.get('/api/image_event_search/:item', db.getImagesByEvent);
