@@ -146,7 +146,7 @@ const getImageAssocTitles = (request, response) => {
 }
 
 const getImagesBySubject = (request, response) => {
-  con.query('call sp_GetImagesBySubject('+ "'" + request.params.item + "','" +  request.params.min + "','" + request.params.max +  "'" + ')', (error, results) => {
+  con.query('call sp_GetImagesBySubject('+ "'" + request.params.item  + "'" + ')',  (error, results) => {
     if (error) {
       return response.json({ status: "ERROR", error });
     }
@@ -155,7 +155,25 @@ const getImagesBySubject = (request, response) => {
 }
 
 const getImagesBySubjectIndex = (request, response) => {
+  con.query('call sp_GetImagesBySubjectIndex('+ "'" + request.params.item  + "'" + ')',  (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
+const getImagesBySubjectIndexDate = (request, response) => {
   con.query('call sp_GetImagesBySubjectIndex('+ "'" + request.params.item + "','" + request.params.min + "','" + request.params.max + "'" + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
+const getImagesBySubjectDate = (request, response) => {
+  con.query('call sp_GetImagesBySubject('+ "'" + request.params.item + "','" +  request.params.min + "','" + request.params.max +  "'" + ')', (error, results) => {
     if (error) {
       return response.json({ status: "ERROR", error });
     }
@@ -224,6 +242,8 @@ module.exports = {
   getImageAssocTitles,
   getImagesBySubject,
   getImagesBySubjectIndex,
+  getImagesBySubjectDate,
+  getImagesBySubjectIndexDate,
   getImagesByEvent,
   getImagesByPerson,
   getImagesByProducer,
