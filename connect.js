@@ -190,6 +190,15 @@ const getImagesByEvent = (request, response) => {
   }) 
 }
 
+const getImagesByEventDate = (request, response) => {
+  con.query('call sp_GetImagesByEventDate('+ "'" + request.params.item + "','" + request.params.min + "','" + request.params.max + "'" + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
 const getImagesByPerson = (request, response) => {
   con.query('call sp_GetImagesByPerson('+ "'" + request.params.item + "'" + ')', (error, results) => {
     if (error) {
@@ -199,8 +208,27 @@ const getImagesByPerson = (request, response) => {
   }) 
 }
 
+const getImagesByPersonDate = (request, response) => {
+  con.query('call sp_GetImagesByPersonDate('+ "'" + request.params.item + "','" + request.params.min + "','" + request.params.max + "'" + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
+
 const getImagesByProducer = (request, response) => {
   con.query('call sp_GetImagesByProducer('+ "'" + request.params.item + "'" + ')', (error, results) => {
+    if (error) {
+      return response.json({ status: "ERROR", error });
+    }
+    return response.json(results);
+  }) 
+}
+
+const getImagesByProducerDate = (request, response) => {
+  con.query('call sp_GetImagesByProducerDate('+ "'" + request.params.item + "','" + request.params.min + "','" + request.params.max + "'" + ')', (error, results) => {
     if (error) {
       return response.json({ status: "ERROR", error });
     }
@@ -245,8 +273,11 @@ module.exports = {
   getImagesBySubjectDate,
   getImagesBySubjectIndexDate,
   getImagesByEvent,
+  getImagesByEventDate,
   getImagesByPerson,
+  getImagesByPersonDate,
   getImagesByProducer,
+  getImagesByProducerDate,
   getAllImageDetails,
   getImageLocation,
   con

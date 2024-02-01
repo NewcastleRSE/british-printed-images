@@ -104,8 +104,11 @@ app.get('/api/image_subject_search_by_index_date/:item/:min/:max', db.getImagesB
 app.get('/api/image_subject_search/:item', db.getImagesBySubject);
 app.get('/api/image_subject_search_by_index/:item', db.getImagesBySubjectIndex);
 app.get('/api/image_event_search/:item', db.getImagesByEvent);
+app.get('/api/image_event_search_date/:item/:min/:max', db.getImagesByEventDate);
 app.get('/api/image_person_search/:item', db.getImagesByPerson);
+app.get('/api/image_person_search_date/:item/:min/:max', db.getImagesByPersonDate);
 app.get('/api/image_producer_search/:item', db.getImagesByProducer);
+app.get('/api/image_producer_search_date/:item/:min/:max', db.getImagesByProducerDate);
 
 module.exports = {
   app,
