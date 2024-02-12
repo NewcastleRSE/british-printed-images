@@ -163,24 +163,6 @@ const getImagesBySubjectIndex = (request, response) => {
   }) 
 }
 
-const getImagesBySubjectIndexDate = (request, response) => {
-  con.query('call sp_GetImagesBySubjectIndexDate('+ "'" + request.params.item + "','" + request.params.min + "','" + request.params.max + "'" + ')', (error, results) => {
-    if (error) {
-      return response.json({ status: "ERROR", error });
-    }
-    return response.json(results);
-  }) 
-}
-
-const getImagesBySubjectDate = (request, response) => {
-  con.query('call sp_GetImagesBySubjectDate('+ "'" + request.params.item + "','" +  request.params.min + "','" + request.params.max +  "'" + ')', (error, results) => {
-    if (error) {
-      return response.json({ status: "ERROR", error });
-    }
-    return response.json(results);
-  }) 
-}
-
 const getImagesByEvent = (request, response) => {
   con.query('call sp_GetImagesByEvent('+ "'" + request.params.item + "'" + ')', (error, results) => {
     if (error) {
@@ -201,15 +183,6 @@ const getImagesByEventDate = (request, response) => {
 
 const getImagesByPerson = (request, response) => {
   con.query('call sp_GetImagesByPerson('+ "'" + request.params.item + "'" + ')', (error, results) => {
-    if (error) {
-      return response.json({ status: "ERROR", error });
-    }
-    return response.json(results);
-  }) 
-}
-
-const getImagesByPersonDate = (request, response) => {
-  con.query('call sp_GetImagesByPersonDate('+ "'" + request.params.item + "','" + request.params.min + "','" + request.params.max + "'" + ')', (error, results) => {
     if (error) {
       return response.json({ status: "ERROR", error });
     }
@@ -270,12 +243,9 @@ module.exports = {
   getImageAssocTitles,
   getImagesBySubject,
   getImagesBySubjectIndex,
-  getImagesBySubjectDate,
-  getImagesBySubjectIndexDate,
   getImagesByEvent,
   getImagesByEventDate,
   getImagesByPerson,
-  getImagesByPersonDate,
   getImagesByProducer,
   getImagesByProducerDate,
   getAllImageDetails,
