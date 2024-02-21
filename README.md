@@ -2,12 +2,12 @@
 
 ## About
 
-Brtish Printed Images is a project to update the website at ([https://bpi1700.org.uk/](https://bpi1700.org.uk/)). The site is digital library of prints and book illustrations from Early Modern Britain. The database has been managed by Kings College Digital Team for many years, but 
+Brtish Printed Images is a rebuild of a legacy website at ([https://bpi1700.org.uk/](https://bpi1700.org.uk/)). The site is digital library of prints and book illustrations from Early Modern Britain, with images ranging from 1550 to 1815. The site allwws swearching by BPI number, subject, event, person and producer. The BPI number is an internal classfication system that has no links to other digital libraries. 
 
 ### Project Team
 Adam Morton, Newcastle University  ([adam.morton@newcastle.ac.uk](mailto:adam.morton@newcastle.ac.uk))  
 Becky Osselton, Newcastle University  ([rebecca.osselton@newcastle.ac.uk](mailto:rebecca.osselton@newcastle.ac.uk)) 
-Digital Team, Kings College Digital Lab (Paul Caton, Pamela Mellon, Florence Du Pre)  
+ 
 
 ### RSE Contact
 Becky Osselton 
@@ -18,11 +18,13 @@ Newcastle University
 ## Built With
 
 [Express](https://expressjs.com/)  
-[Tailwind](https://tailwindcss.com/)  
+[Tailwind](https://tailwindcss.com/) 
+
+The database is a sqlserver database hosted on Azure.
 
 ## Getting Started
 
-Use Node 18
+The application is built using Express.js and will run on Node 18, 21. 
 
 ### Prerequisites
 
@@ -31,19 +33,19 @@ Tailwind
 
 ### Installation
 
-npm install
+`npm install` to install all dependencies
 
 ### Running Locally
 
-Create an .env file containing the following variables:
+Create an .env file containing the following variables: 
 
-```
-DB_HOST=xxx
-DB_USER=xxx
-DB_PASS=xxx
-DB_NAME=xxx
-DB_PORT=xxx
-```
+DB_HOST=
+DB_USER=
+DB_PASS=
+DB_NAME=
+DB_PORT=
+
+These will connect to the Azure database.
 
 Start the server running with `node app.js`
 
