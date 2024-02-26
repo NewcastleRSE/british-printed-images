@@ -2,11 +2,11 @@
 const Sentry = require('@sentry/node');
 const { ProfilingIntegration } = require('@sentry/profiling-node');
 const path = require('path');
-const db = require('./connect')
-const express = require('express')
+const db = require('./connect');
+const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser')
-const app = express()
+const bodyParser = require('body-parser');
+const app = express();
 
 // Sentry stuff
 
@@ -65,9 +65,9 @@ app.use(
   })
 )
 
-// database connection
+// // database connection (closeConnection used by tests)
 const port = process.env.PORT || 3000;
-const closeConnection = db.con;
+// const closeConnection = db.con;
 
 const server = app.listen(port, () => {
   console.log(`App listening on port ${port}`)
@@ -81,10 +81,13 @@ app.get('/', (req, res) => {
 });
 
 
-// api request call functions in the imported connect.js file
-// takes int value 'id'
+// // api request call functions in the imported connect.js file
+
+// test APIs
 app.get('/api/bpi_cat', db.getBpiCat)
 app.get('/api/bpi_cat/:id', db.getBpiCatItem);
+
+// main app API
 app.get('/api/image_details/:id', db.getImageDetails);
 app.get('/api/image_inscription/:id', db.getImageInscription);
 app.get('/api/image_producers/:id', db.getImageProducers);
@@ -102,13 +105,15 @@ app.get('/api/image_location/:id', db.getImageLocation);
 app.get('/api/image_subject_search/:item', db.getImagesBySubject);
 app.get('/api/image_subject_search_by_index/:item', db.getImagesBySubjectIndex);
 app.get('/api/image_event_search/:item', db.getImagesByEvent);
-app.get('/api/image_event_search_date/:item/:min/:max', db.getImagesByEventDate);
+app.get('/api/image_label_search/:item', db.getImagesByLabelSearch);
 app.get('/api/image_person_search/:item', db.getImagesByPerson);
 app.get('/api/image_producer_search/:item', db.getImagesByProducer);
+// takes string values 'item', 'min' and 'max'
 app.get('/api/image_producer_search_date/:item/:min/:max', db.getImagesByProducerDate);
+app.get('/api/image_event_search_date/:item/:min/:max', db.getImagesByEventDate);
+
 
 module.exports = {
   app,
-  server,
-  closeConnection
+  server
 } 
