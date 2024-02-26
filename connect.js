@@ -331,5 +331,6 @@ module.exports = {
     getImageLocation,
     getImagesByLabelSearch,
     con,
+    sql,
     sqlConfig
 }
