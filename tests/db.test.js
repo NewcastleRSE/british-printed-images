@@ -1,7 +1,7 @@
 
 jest.useRealTimers();
 
-const { app, server, closeConnection } = require("../app");
+const { app, server } = require("../app");
 const request = require("supertest");
 
 const bpi_cat500 = [
@@ -147,12 +147,20 @@ const image_producer_search =
 
 // tests
 
-// describe("Test case for bpi1700 database", () => {
-//   it("test case for getting all bpi cat numbers", async () => {
-//     const response = await request(app).get("/api/bpi_cat");
-//     expect(response.status).toBe(200);
-//   }); 
-// }); 
+// const { sql, sqlConfig } = require('../connect');
+
+// beforeAll(async () => {
+//   await server.close();
+//   await sql.connect(sqlConfig);
+// });
+
+
+describe("Test case for bpi1700 database", () => {
+  it("test case for getting all bpi cat numbers", async () => {
+    const response = await request(app).get("/api/bpi_cat");
+    expect(response.status).toBe(200);
+  }); 
+}); 
 
 describe("Test case for bpi1700 database", () => {
   it("test case for data from bpi cat number", async () => {
@@ -319,10 +327,9 @@ describe("Test case for bpi1700 database", () => {
 
 // close things off after the tests have finished
 afterAll(async () => {
-  await new Promise((resolve) => setTimeout(() => resolve(), 2000)); 
-  console.log('CONN CLOSED');
+  await new Promise((resolve) => setTimeout(() => resolve(), 4500)); 
+  console.log('CONNECTION CLOSED');
   server.close();
-  //await closeConnection.Close(); 
 });
 
 
