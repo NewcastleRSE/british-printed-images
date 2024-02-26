@@ -2,6 +2,7 @@
 
 ## About
 
+
 Brtish Printed Images is a rebuild of a legacy website at ([https://bpi1700.org.uk/](https://bpi1700.org.uk/)). The site is digital library of prints and book illustrations from Early Modern Britain, with images ranging from 1550 to 1815. The site allwws swearching by BPI number, subject, event, person and producer. The BPI number is an internal classfication system that has no links to other digital libraries. 
 
 ### Project Team
@@ -66,10 +67,19 @@ Jest has been used as the test library. Execute database tests with the command 
 ## Roadmap
 
 - [x] Initial Research  
-- [ ] Minimum viable product 
+- [x] Minimum viable product   
 - [ ] Alpha Release  
 - [ ] Feature-Complete Release  
 
+## Contributing
+
+### Main Branch
+### Dev Branch
+### Feature Branches
 
 ## Acknowledgements
-This work was funded by a grant from AHRC. 
+
+This work was funded by a grant from the AHRC.
+
+
+
