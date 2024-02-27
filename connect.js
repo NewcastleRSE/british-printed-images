@@ -2,6 +2,8 @@ require('dotenv').config()
 
 const sql = require("mssql");
 
+// environment variables locally in .env file
+
 const sqlConfig = {
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
