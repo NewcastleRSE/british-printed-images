@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "jest --coverage --detectOpenHandles",
-    "start": "node app.js" 
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "flaschenpost": "^5.1.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
+    "mssql": "^10.0.2",
     "mysql2": "^3.6.3",
     "pg": "^8.11.3",
     "save": "^2.9.0",

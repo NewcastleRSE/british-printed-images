@@ -2,29 +2,13 @@
 
 ## About
 
-The British Printed Images website is a digital library of print and book illustations from early modern Britain. It allows searching and retrieval of images recorded up to 1700. The website allows searching using the following high level categories:
 
- * BPI number
- * Producer
- * Persons
- * Subject
- * Places
- * Date
- * Technique
-
-Many of the above categories also have search modifying options, that allow finer-grained retreival. 
-
-### Project Team
-Adam Morton, Newcastle University  ([adam.morton@newcastle.ac.uk](mailto:adam.morton@newcastle.ac.uk))  
-Becky Osselton, Newcastle University  ([rebecca.osselton@newcastle.ac.uk](mailto:rebecca.osselton@example.com))
-
-Kings College Digital Lab (Paul Caton, Pamela Mellon, Florence Du Pre) 
-Brtish Printed Images is a project to update the website at ([https://bpi1700.org.uk/](https://bpi1700.org.uk/)). The site is digital library of prints and book illustrations from Early Modern Britain. The database has been managed by Kings College Digital Team for many years, but 
+Brtish Printed Images is a rebuild of a legacy website at ([https://bpi1700.org.uk/](https://bpi1700.org.uk/)). The site is digital library of prints and book illustrations from Early Modern Britain, with images ranging from 1550 to 1815. The site allwws swearching by BPI number, subject, event, person and producer. The BPI number is an internal classfication system that has no links to other digital libraries. 
 
 ### Project Team
 Adam Morton, Newcastle University  ([adam.morton@newcastle.ac.uk](mailto:adam.morton@newcastle.ac.uk))  
 Becky Osselton, Newcastle University  ([rebecca.osselton@newcastle.ac.uk](mailto:rebecca.osselton@newcastle.ac.uk)) 
-Digital Team, Kings College Digital Lab (Paul Caton, Pamela Mellon, Florence Du Pre)  
+ 
 
 ### RSE Contact
 Becky Osselton 
@@ -35,11 +19,13 @@ Newcastle University
 ## Built With
 
 [Express](https://expressjs.com/)  
-[Tailwind](https://tailwindcss.com/)  
+[Tailwind](https://tailwindcss.com/) 
+
+The database is a sqlserver database hosted on Azure.
 
 ## Getting Started
 
-Use Node 18
+The application is built using Express.js and will run on Node 18, 21. 
 
 ### Prerequisites
 
@@ -48,19 +34,19 @@ Tailwind
 
 ### Installation
 
-npm install
+`npm install` to install all dependencies
 
 ### Running Locally
 
-Create an .env file containing the following variables:
+Create an .env file containing the following variables: 
 
-```
-DB_HOST=xxx
-DB_USER=xxx
-DB_PASS=xxx
-DB_NAME=xxx
-DB_PORT=xxx
-```
+DB_HOST=
+DB_USER=
+DB_PASS=
+DB_NAME=
+DB_PORT=
+
+These will connect to the Azure database.
 
 Start the server running with `node app.js`
 
@@ -81,7 +67,7 @@ Jest has been used as the test library. Execute database tests with the command 
 ## Roadmap
 
 - [x] Initial Research  
-- [ ] Minimum viable product   
+- [x] Minimum viable product   
 - [ ] Alpha Release  
 - [ ] Feature-Complete Release  
 
