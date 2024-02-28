@@ -50,16 +50,17 @@ DB_PORT=
 
 These will connect to the live Azure database.
 
-Start the server running with `node app.js`. The client repo is at: [bpi-vue-client](https://github.com/NewcastleRSE/bpi-vue-client). The client application can be built into a dist folder, which can be placed inside the public folder of this repository.
+Start the server running with `node app.js`. This starts the application running on localhost:3000. The client repo is at: [bpi-vue-client](https://github.com/NewcastleRSE/bpi-vue-client), and is Vue.js application which will run on localhost:8080. 
 
 ### Running Tests
 
-Jest has been used as the test library. Execute database tests with the command below.
+Jest has been used as the test library. Execute database tests with the command below. The tests connect to the live database, so it may be necessary to whitelist an IP through Azure bfreo the tests will run.
 
 `npm test`
 
 ### Production deployment
 
+The two parts of the application need to be brought togther as one code base. The client repository needs to be built and minified locally and then the build files copied into this repository public folder. The client application files build into a 'dist' folder, which can be placed inside the public folder of this repository. Then this repo is deployed through GitHub actions on a push to main branch.
 
 ## Roadmap
 
