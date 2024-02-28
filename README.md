@@ -19,7 +19,6 @@ Newcastle University
 ## Built With
 
 [Express](https://expressjs.com/)  
-[Tailwind](https://tailwindcss.com/) 
 
 The database is a sqlserver database hosted on Azure, under the subscription 'british-printed-images'.
 
@@ -30,7 +29,7 @@ The application is built using Express.js and will run on Node 18, 21.
 ### Prerequisites
 
 Node.js
-Tailwind
+Express
 
 ### Installation
 
