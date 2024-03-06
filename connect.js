@@ -35,7 +35,6 @@ const con = sql.connect(sqlConfig)
 // function used by test only
 // get items limit 5
 const getBpiCat = (response) => {
-
     var request = new sql.request();
     request.query('SELECT * FROM bpi_cat ORDER BY BPI_catKey ASC FETCH FIRST 5 ROWS ONLY', (error, results) => {
       if (error) {
@@ -48,18 +47,25 @@ const getBpiCat = (response) => {
 // function used by test only
 // get single item
 const getBpiCatItem = (request, response) => {
-    var req = new sql.request();
-    req.query('SELECT * FROM bpi_cat where BPI_catKey = ?', request.params.id, (error, results) => {
-      if (error) {
-        return response.json({ status: "ERROR", error });
-      }
-      return response.send(results);
-    }) 
+    if(validateBPINumber(request.params.id)){
+        var req = new sql.request();
+        req.query('SELECT * FROM bpi_cat where BPI_catKey = ?', request.params.id, (error, results) => {
+          if (error) {
+            return response.json({ status: "ERROR", error });
+          }
+          return response.send(results);
+        }) 
+    }
+    else {
+        return false;
+    }
+   
 } 
 
 // main app functions
 
 const getImageDetails = (request, response) => {
+    if(validateBPINumber(request.params.id)){
     new sql.Request()
     .input('id', sql.Int, request.params.id)
     .execute('sp_GetImageDetails', (error, result) => {
@@ -68,6 +74,10 @@ const getImageDetails = (request, response) => {
         }
         return response.json(result);
     })
+    }
+    else {
+        console.log('validation error')
+    }
 } 
 
 
@@ -305,6 +315,34 @@ const getImagesByLabelSearch = (request, response) => {
         }
         return response.json(result);
     })
+}
+
+
+//validate bpi_number
+function validateBPINumber(BPI_number){
+try {
+    if(isNaN(BPI_number)) throw "not a number";
+    BPI_number = Number(BPI_number);
+    if(BPI_number <= 0) throw "too low";
+    if(BPI_number > 10186) throw "too high";
+    }
+    catch(err) {
+    console.log(err);
+    }
+    return true;
+}
+
+//validate item
+function validateSearchItem(item) {
+try {
+    if(item.trim() == "") throw "empty";
+    if(item.length <= 0) throw "too low";
+    if(item.length > 50) throw "too high";
+    }
+    catch(err) {
+    console.log(err);
+    }
+    return true;
 }
 
 
