@@ -53,6 +53,27 @@ beforeAll(async () => {
 
 // tests
 
+//  api/image_dimensions
+describe("Test case for bpi1700 database", () => {
+  it("test case for image dimensions from bpi cat number", async () => {
+    const response = await request(app).get("/api/image_dimensions/500");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(image_dimensions500);
+  }
+  ); 
+});
+
+// api/image_details
+describe("Test case for bpi1700 database", () => {
+  it("test case for image details from bpi cat number", async () => {
+    const response = await request(app).get("/api/image_details/500");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(image_details500);
+  }
+  ); 
+});
+
+// api/image_assoc_titles
 describe("Test case for bpi1700 database", () => {
   it("test case for image associated titles from bpi cat number", async () => {
     const response = await request(app).get("/api/image_assoc_titles/513");
@@ -62,6 +83,7 @@ describe("Test case for bpi1700 database", () => {
   ); 
 });
 
+// api/image_subject_search
 describe("Test case for bpi1700 database", () => {
   it("test case for image subject search from search item", async () => {
     const response = await request(app).get("/api/image_subject_search/black");
@@ -71,6 +93,7 @@ describe("Test case for bpi1700 database", () => {
   ); 
 });
 
+// api/image_subject_search_by_index/
 describe("Test case for bpi1700 database", () => {
   it("test case for image subject search by index", async () => {
     const response = await request(app).get("/api/image_subject_search_by_index/unicorn");
@@ -80,6 +103,7 @@ describe("Test case for bpi1700 database", () => {
   ); 
 });
 
+// api/image_event_search
 describe("Test case for bpi1700 database", () => {
   it("test case for image search by event", async () => {
     const response = await request(app).get("/api/image_event_search/regicides");
@@ -89,6 +113,7 @@ describe("Test case for bpi1700 database", () => {
   ); 
 });
 
+// api/image_producer_search
 describe("Test case for bpi1700 database", () => {
   it("test case for image search by producer ", async () => {
     const response = await request(app).get("/api/image_producer_search/Simmons");
@@ -98,6 +123,7 @@ describe("Test case for bpi1700 database", () => {
   ); 
 });
 
+// api/image_assoc_names
 describe("Test case for bpi1700 database", () => {
   it("test case for image associated names from bpi cat number", async () => {
     const response = await request(app).get("/api/image_assoc_names/600");
@@ -107,6 +133,7 @@ describe("Test case for bpi1700 database", () => {
   ); 
 });
 
+// api/image_comments
 describe("Test case for bpi1700 database", () => {
   it("test case for image comments from bpi cat number", async () => {
     const response = await request(app).get("/api/image_comments/600");
@@ -116,6 +143,7 @@ describe("Test case for bpi1700 database", () => {
   ); 
 });
 
+// api/all_image_details
 describe("Test case for bpi1700 database", () => {
   it("test case for all image details from bpi cat number", async () => {
     const response = await request(app).get("/api/all_image_details/500");
@@ -125,6 +153,7 @@ describe("Test case for bpi1700 database", () => {
   ); 
 });
 
+// api/biblio_ref
 describe("Test case for bpi1700 database", () => {
   it("test case for image biblio refs from bpi cat number", async () => {
     const response = await request(app).get("/api/biblio_ref/560");
@@ -134,6 +163,7 @@ describe("Test case for bpi1700 database", () => {
   ); 
 });
 
+// api/image_production_place
 describe("Test case for bpi1700 database", () => {
   it("test case for image production place from bpi cat number", async () => {
     const response = await request(app).get("/api/image_production_place/600");
@@ -143,6 +173,7 @@ describe("Test case for bpi1700 database", () => {
   ); 
 });
 
+// api/image_subjects
 describe("Test case for bpi1700 database", () => {
   it("test case for image subjects from bpi cat number", async () => {
     const response = await request(app).get("/api/image_subjects/900");
@@ -151,6 +182,48 @@ describe("Test case for bpi1700 database", () => {
   }
   ); 
 });
+
+// api/image_inscription
+describe("Test case for bpi1700 database", () => {
+  it("test case for image inscription from bpi cat number", async () => {
+    const response = await request(app).get("/api/image_inscription/500");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(image_inscription500);
+  }
+  ); 
+});
+
+// api/image_producers
+describe("Test case for bpi1700 database", () => {
+  it("test case for image producers from bpi cat number", async () => {
+    const response = await request(app).get("/api/image_producers/500");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(image_producers500);
+  }
+  ); 
+});
+
+// api/image_schools
+describe("Test case for bpi1700 database", () => {
+  it("test case for image schools from bpi cat number", async () => {
+    const response = await request(app).get("/api/image_schools/500");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(image_schools500);
+  }
+  ); 
+});
+
+// api/image_person_search
+describe("Test case for bpi1700 database", () => {
+  it("test case for image search by person", async () => {
+    const response = await request(app).get("/api/image_person_search/jack");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(image_person_search);
+  }
+  ); 
+});
+
+// validation tests
 
 describe("Test case for bpi_number validation", () => {
   it("test case for bpi number that's too high", async () => {
@@ -161,6 +234,7 @@ describe("Test case for bpi_number validation", () => {
   ); 
 });
 
+// zero is invalid
 describe("Test case for bpi_number validation", () => {
   it("test case for bpi number that's too low", async () => {
     const response = await request(app).get("/api/image_details/0");
@@ -170,6 +244,7 @@ describe("Test case for bpi_number validation", () => {
   ); 
 });
 
+// a string is invalid
 describe("Test case for bpi_number validation", () => {
   it("test case for bpi number that's not a number", async () => {
     const response = await request(app).get("/api/image_details/string");
@@ -179,6 +254,9 @@ describe("Test case for bpi_number validation", () => {
   ); 
 });
 
+
+
+// 2 chars is invalid
 describe("Test case for item validation", () => {
   it("test case for item that's too short", async () => {
     const response = await request(app).get("/api/image_subject_search/ab");
@@ -188,42 +266,7 @@ describe("Test case for item validation", () => {
   ); 
 });
 
-describe("Test case for bpi1700 database", () => {
-  it("test case for image inscription from bpi cat number", async () => {
-    const response = await request(app).get("/api/image_inscription/500");
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual(image_inscription500);
-  }
-  ); 
-});
-
-describe("Test case for bpi1700 database", () => {
-  it("test case for image producers from bpi cat number", async () => {
-    const response = await request(app).get("/api/image_producers/500");
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual(image_producers500);
-  }
-  ); 
-});
-
-describe("Test case for bpi1700 database", () => {
-  it("test case for image schools from bpi cat number", async () => {
-    const response = await request(app).get("/api/image_schools/500");
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual(image_schools500);
-  }
-  ); 
-});
-
-describe("Test case for bpi1700 database", () => {
-  it("test case for image search by person", async () => {
-    const response = await request(app).get("/api/image_person_search/jack");
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual(image_person_search);
-  }
-  ); 
-});
-
+// over 50 chars is invalid
 describe("Test case for item validation", () => {
   it("test case for bpi item that's too long", async () => {
     const response = await request(app).get("/api/image_subject_search/osjfosfodkfdokgdgkdqegyeywgewygeywywrfdkxbfishfiushfushfushfushfussudsfnsofoshfkdoudrhiufidrfiuerhr");
@@ -233,6 +276,7 @@ describe("Test case for item validation", () => {
   ); 
 });
 
+// no alpha only is invalid
 describe("Test case for item validation", () => {
   it("test case for bpi item that's not alpha only", async () => {
     const response = await request(app).get("/api/image_subject_search/485utrjt046");
@@ -242,23 +286,7 @@ describe("Test case for item validation", () => {
   ); 
 });
 
-describe("Test case for bpi1700 database", () => {
-  it("test case for image dimensions from bpi cat number", async () => {
-    const response = await request(app).get("/api/image_dimensions/500");
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual(image_dimensions500);
-  }
-  ); 
-});
 
-describe("Test case for bpi1700 database", () => {
-  it("test case for image details from bpi cat number", async () => {
-    const response = await request(app).get("/api/image_details/500");
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual(image_details500);
-  }
-  ); 
-});
 
 
 // close things off after the tests have finished
