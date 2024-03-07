@@ -81,11 +81,7 @@ app.get('/', (req, res) => {
 });
 
 
-// // api request call functions in the imported connect.js file
-
-// test APIs
-app.get('/api/bpi_cat', db.getBpiCat)
-app.get('/api/bpi_cat/:id', db.getBpiCatItem);
+// api request call functions in the imported connect.js file
 
 // main app API
 app.get('/api/image_details/:id', db.getImageDetails);
