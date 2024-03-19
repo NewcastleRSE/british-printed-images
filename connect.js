@@ -387,6 +387,21 @@ const getImagesByLabelSearch = (request, response) => {
     }       
 }
 
+const getImagesByTechnique = (request, response) => {
+    if(validateSearchItem(request.params.item)){
+        new sql.Request()
+        .input('item', sql.VarChar(50), request.params.item)
+        .execute('sp_GetImagesBytechnique', (error, result) => {
+            if(error){
+                return response.json({ status: "ERROR", error });                  
+            }
+            return response.json(result);
+        })
+    }
+    else {
+        return response.json({ status: "ERROR"});
+    }       
+}
 
 //validate bpi_number
 function validateBPINumber(BPI_number){   
@@ -438,6 +453,7 @@ module.exports = {
     getAllImageDetails,
     getImageLocation,
     getImagesByLabelSearch,
+    getImagesByTechnique,
     con,
     sql,
     sqlConfig

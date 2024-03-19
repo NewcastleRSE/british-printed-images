@@ -104,6 +104,8 @@ app.get('/api/image_event_search/:item', db.getImagesByEvent);
 app.get('/api/image_label_search/:item', db.getImagesByLabelSearch);
 app.get('/api/image_person_search/:item', db.getImagesByPerson);
 app.get('/api/image_producer_search/:item', db.getImagesByProducer);
+app.get('/api/image_person_search/:item', db.getImagesByPerson);
+app.get('/api/image_technique_search/:item', db.getImagesByTechnique);
 // takes string values 'item', 'min' and 'max'
 app.get('/api/image_producer_search_date/:item/:min/:max', db.getImagesByProducerDate);
 app.get('/api/image_event_search_date/:item/:min/:max', db.getImagesByEventDate);

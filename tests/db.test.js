@@ -34,11 +34,12 @@ const image_subject_search_by_index = {"output": {}, "recordset": [{"BPI_catKey"
 
 const image_event_search = {"output": {}, "recordset": [{"BPI_catKey": 4268}, {"BPI_catKey": 4290}, {"BPI_catKey": 4765 }, {"BPI_catKey": 5705 }, {"BPI_catKey": 5808 }], "recordsets": [[{"BPI_catKey": 4268}, {"BPI_catKey": 4290 }, {"BPI_catKey": 4765 }, {"BPI_catKey": 5705 }, {"BPI_catKey": 5808 }]], "returnValue": 0, "rowsAffected": []};
 
-const image_person_search =  {"output": {}, "recordset" : [{"BPI_catKey": 7755, "bm_as_name": "Adams, Jack (fl. 1660s)",},{
+const image_person_search = {"output": {}, "recordset" : [{"BPI_catKey": 7755, "bm_as_name": "Adams, Jack (fl. 1660s)",},{
  "BPI_catKey": 8511,"bm_as_name": "Jackman, A (1643)", }, {"BPI_catKey": 9973, "bm_as_name": "Jackson, Arthur (c. 1593-1666)",}, ], "recordsets": [[{ "BPI_catKey": 7755, "bm_as_name": "Adams, Jack (fl. 1660s)", }, {"BPI_catKey": 8511,"bm_as_name": "Jackman, A (1643)", }, {  "BPI_catKey": 9973, "bm_as_name": "Jackson, Arthur (c. 1593-1666)", }, ], ], "returnValue": 0, "rowsAffected": [],"rowsAffected": []};
 
-const image_producer_search = 
-  {"output": {}, "recordset": [{"BPI_catKey": 8603}, {"BPI_catKey": 8762}], "recordsets": [[{"BPI_catKey": 8603}, {"BPI_catKey": 8762}]], "returnValue": 0, "rowsAffected": []};
+const image_producer_search = {"output": {}, "recordset": [{"BPI_catKey": 8603}, {"BPI_catKey": 8762}], "recordsets": [[{"BPI_catKey": 8603}, {"BPI_catKey": 8762}]], "returnValue": 0, "rowsAffected": []};
+
+const image_technique_search = {"output": {}, "recordset": [{"BPI_catKey": 7743 }, {"BPI_catKey": 7744 }, {"BPI_catKey": 7787 }, {"BPI_catKey": 8330 }, {"BPI_catKey": 8362 }, {"BPI_catKey": 9810 }], "recordsets": [[{"BPI_catKey": 7743 }, {"BPI_catKey": 7744 }, {"BPI_catKey": 7787 }, {"BPI_catKey": 8330 }, {"BPI_catKey": 8362 }, {"BPI_catKey": 9810 }]], "returnValue": 0, "rowsAffected": []};
 
 
 
@@ -219,6 +220,16 @@ describe("Test case for bpi1700 database", () => {
     const response = await request(app).get("/api/image_person_search/jack");
     expect(response.status).toBe(200);
     expect(response.body).toEqual(image_person_search);
+  }
+  ); 
+});
+
+// api/image_person_search
+describe("Test case for bpi1700 database", () => {
+  it("test case for image search by technique", async () => {
+    const response = await request(app).get("/api/image_technique_search/stipple");
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(image_technique_search);
   }
   ); 
 });
