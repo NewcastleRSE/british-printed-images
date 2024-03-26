@@ -4,7 +4,7 @@ jest.useRealTimers();
 const { app, server } = require("../app");
 const request = require("supertest");
 
-const image_details500 = {"output": {}, "recordset": [{"CatKey": "500", "Comments": "Hind lists the various books in which impressions of this plate appear. For the second state, see 1863,0808.62.", "Description": "The hearse of Henry Frederick, Prince of Wales, with his embalmed body lying in state beneath a funeral canopy. The second state uses an additional plate which extends the royal arms and Prince's feathers at the top of the catafalque, and adds another inscription.  1612 Engraving", "Label": "Hole: hearse of Henry Frederick, Prince of Wales. 1612", "Name": "114098.jpg", "OtherLabel": "Hole: hearse of Henry Frederick, Prince of Wales. 1612", "Title": null}], "recordsets": [[{"CatKey": "500", "Comments": "Hind lists the various books in which impressions of this plate appear. For the second state, see 1863,0808.62.", "Description": "The hearse of Henry Frederick, Prince of Wales, with his embalmed body lying in state beneath a funeral canopy. The second state uses an additional plate which extends the royal arms and Prince's feathers at the top of the catafalque, and adds another inscription.  1612 Engraving", "Label": "Hole: hearse of Henry Frederick, Prince of Wales. 1612", "Name": "114098.jpg", "OtherLabel": "Hole: hearse of Henry Frederick, Prince of Wales. 1612", "Title": null}]], "returnValue": 0, "rowsAffected": []};
+const image_details500 = {"output": {}, "recordset": [{"CatKey": "500", "Comments": "Hind lists the various books in which impressions of this plate appear. For the second state, see  British Museum 1863,0808.62.", "Description": "The hearse of Henry Frederick, Prince of Wales, with his embalmed body lying in state beneath a funeral canopy. The second state uses an additional plate which extends the royal arms and Prince's feathers at the top of the catafalque, and adds another inscription.  1612 Engraving", "Label": "Hole: hearse of Henry Frederick, Prince of Wales. 1612", "Name": "114098.jpg", "OtherLabel": "Hole: hearse of Henry Frederick, Prince of Wales. 1612", "Title": null}], "recordsets": [[{"CatKey": "500", "Comments": "Hind lists the various books in which impressions of this plate appear. For the second state, see  British Museum 1863,0808.62.", "Description": "The hearse of Henry Frederick, Prince of Wales, with his embalmed body lying in state beneath a funeral canopy. The second state uses an additional plate which extends the royal arms and Prince's feathers at the top of the catafalque, and adds another inscription.  1612 Engraving", "Label": "Hole: hearse of Henry Frederick, Prince of Wales. 1612", "Name": "114098.jpg", "OtherLabel": "Hole: hearse of Henry Frederick, Prince of Wales. 1612", "Title": null}]], "returnValue": 0, "rowsAffected": []};
 
 const image_inscription500 = {"output": {}, "recordset": [{"mus_inscription_content": "With two columns of four verses, one in Latin by Hugo Holland, the other in English by George Chapman, and mottoes in the funeral canopy.The second state has an additional title at top 'The Herse and Representacion of our late Highe and Mighty Henry Prince of Wales &c' and names below 'Guli Holus sculp' and 'Lond print for Jo Budge'."}], "recordsets": [[{"mus_inscription_content": "With two columns of four verses, one in Latin by Hugo Holland, the other in English by George Chapman, and mottoes in the funeral canopy.The second state has an additional title at top 'The Herse and Representacion of our late Highe and Mighty Henry Prince of Wales &c' and names below 'Guli Holus sculp' and 'Lond print for Jo Budge'."}]], "returnValue": 0, "rowsAffected": []};
 
@@ -34,12 +34,14 @@ const image_subject_search_by_index = {"output": {}, "recordset": [{"BPI_catKey"
 
 const image_event_search = {"output": {}, "recordset": [{"BPI_catKey": 4268}, {"BPI_catKey": 4290}, {"BPI_catKey": 4765 }, {"BPI_catKey": 5705 }, {"BPI_catKey": 5808 }], "recordsets": [[{"BPI_catKey": 4268}, {"BPI_catKey": 4290 }, {"BPI_catKey": 4765 }, {"BPI_catKey": 5705 }, {"BPI_catKey": 5808 }]], "returnValue": 0, "rowsAffected": []};
 
-const image_person_search = {"output": {}, "recordset" : [{"BPI_catKey": 7755, "bm_as_name": "Adams, Jack (fl. 1660s)",},{
- "BPI_catKey": 8511,"bm_as_name": "Jackman, A (1643)", }, {"BPI_catKey": 9973, "bm_as_name": "Jackson, Arthur (c. 1593-1666)",}, ], "recordsets": [[{ "BPI_catKey": 7755, "bm_as_name": "Adams, Jack (fl. 1660s)", }, {"BPI_catKey": 8511,"bm_as_name": "Jackman, A (1643)", }, {  "BPI_catKey": 9973, "bm_as_name": "Jackson, Arthur (c. 1593-1666)", }, ], ], "returnValue": 0, "rowsAffected": [],"rowsAffected": []};
+const image_person_search = {"output": {}, "recordset" : [{"BPI_catKey": 7755},{
+ "BPI_catKey": 8511 }, {"BPI_catKey": 9973} ], "recordsets": [[{ "BPI_catKey": 7755 }, {"BPI_catKey": 8511 }, {  "BPI_catKey": 9973 }, ], ], "returnValue": 0, "rowsAffected": [],"rowsAffected": []};
 
 const image_producer_search = {"output": {}, "recordset": [{"BPI_catKey": 8603}, {"BPI_catKey": 8762}], "recordsets": [[{"BPI_catKey": 8603}, {"BPI_catKey": 8762}]], "returnValue": 0, "rowsAffected": []};
 
 const image_technique_search = {"output": {}, "recordset": [{"BPI_catKey": 7743 }, {"BPI_catKey": 7744 }, {"BPI_catKey": 7787 }, {"BPI_catKey": 8330 }, {"BPI_catKey": 8362 }, {"BPI_catKey": 9810 }], "recordsets": [[{"BPI_catKey": 7743 }, {"BPI_catKey": 7744 }, {"BPI_catKey": 7787 }, {"BPI_catKey": 8330 }, {"BPI_catKey": 8362 }, {"BPI_catKey": 9810 }]], "returnValue": 0, "rowsAffected": []};
+
+const image_technique_search_2 = {"output": {}, "recordset": [{"BPI_catKey": 7743 }, {"BPI_catKey": 7744 }, {"BPI_catKey": 7787 }, {"BPI_catKey": 8330 }, {"BPI_catKey": 8362 }, {"BPI_catKey": 9810 }], "recordsets": [[{"BPI_catKey": 7743 }, {"BPI_catKey": 7744 }, {"BPI_catKey": 7787 }, {"BPI_catKey": 8330 }, {"BPI_catKey": 8362 }, {"BPI_catKey": 9810 }]], "returnValue": 0, "rowsAffected": []};
 
 
 
@@ -233,6 +235,7 @@ describe("Test case for bpi1700 database", () => {
   }
   ); 
 });
+
 
 // validation tests
 
