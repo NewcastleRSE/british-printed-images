@@ -255,7 +255,8 @@ const getImageLocation = (request, response) => {
 // stored procedures that take an 'item' VARCHAR(50)
 
 const getImagesBySubject = (request, response) => {
-    if(validateSearchItem(request.params.item)){
+    const decodedItem = decodeURI(request.params.item);
+    if(validateSearchItem(decodedItem)){
         new sql.Request()
         .input('item', sql.VarChar(50), request.params.item)
         .execute('sp_GetImagesBySubject', (error, result) => {
@@ -266,12 +267,13 @@ const getImagesBySubject = (request, response) => {
         })
     }
     else {
-        return response.json({ status: "ERROR"});
+        return response.json({ status: "Invalid text"});
     }       
 }
 
 const getImagesBySubjectIndex = (request, response) => {
-    if(validateSearchItem(request.params.item)){
+    const decodedItem = decodeURI(request.params.item);
+    if(validateSearchItem(decodedItem)){
         new sql.Request()
         .input('item', sql.VarChar(50), request.params.item)
         .execute('sp_GetImagesBySubjectIndex', (error, result) => {
@@ -282,12 +284,13 @@ const getImagesBySubjectIndex = (request, response) => {
         })
     }
     else {
-        return response.json({ status: "ERROR"});
+        return response.json({ status: "Invalid text"});
     }      
 }
 
 const getImagesByEvent = (request, response) => {
-    if(validateSearchItem(request.params.item)){
+    const decodedItem = decodeURI(request.params.item);
+    if(validateSearchItem(decodedItem)){
         new sql.Request()
         .input('item', sql.VarChar(50), request.params.item)
         .execute('sp_GetImagesByEvent', (error, result) => {
@@ -298,12 +301,13 @@ const getImagesByEvent = (request, response) => {
         })
     }
     else {
-        return response.json({ status: "ERROR"});
+        return response.json({ status: "Invalid text"});
     }     
 }
 
 const getImagesByEventDate = (request, response) => {
-    if(validateSearchItem(request.params.item)){
+    const decodedItem = decodeURI(request.params.item);
+    if(validateSearchItem(decodedItem)){
         new sql.Request()
         .input('item', sql.VarChar(50), request.params.item)
         .input('min', sql.Int, request.params.min)
@@ -316,13 +320,14 @@ const getImagesByEventDate = (request, response) => {
         })
     }
     else {
-        return response.json({ status: "ERROR"});
+        return response.json({ status: "Invalid text"});
     }       
 }
 
 
 const getImagesByPerson = (request, response) => {
-    if(validateSearchItem(request.params.item)){
+    const decodedItem = decodeURI(request.params.item);
+    if(validateSearchItem(decodedItem)){
         new sql.Request()
         .input('item', sql.VarChar(50), request.params.item)
         .execute('sp_GetImagesByPerson', (error, result) => {
@@ -333,12 +338,13 @@ const getImagesByPerson = (request, response) => {
         })
     }
     else {
-        return response.json({ status: "ERROR"});
+        return response.json({ status: "Invalid text"});
     }       
 }
 
 const getImagesByProducer = (request, response) => {
-    if(validateSearchItem(request.params.item)){
+    const decodedItem = decodeURI(request.params.item);
+    if(validateSearchItem(decodedItem)){
         new sql.Request()
         .input('item', sql.VarChar(50), request.params.item)
         .execute('sp_GetImagesByProducer', (error, result) => {
@@ -349,12 +355,13 @@ const getImagesByProducer = (request, response) => {
         })
     }
     else {
-        return response.json({ status: "ERROR"});
+        return response.json({ status: "Invalid text"});
     }       
 }
 
 const getImagesByProducerDate = (request, response) => {
-    if(validateSearchItem(request.params.item)){
+    const decodedItem = decodeURI(request.params.item);
+    if(validateSearchItem(decodedItem)){
         new sql.Request()
         .input('item', sql.VarChar(50), request.params.item)
         .input('min', sql.Int, request.params.min)
@@ -367,12 +374,13 @@ const getImagesByProducerDate = (request, response) => {
         })
     }
     else {
-        return response.json({ status: "ERROR"});
+        return response.json({ status: "Invalid text"});
     }       
 }
 
 const getImagesByLabelSearch = (request, response) => {
-    if(validateSearchItem(request.params.item)){
+    const decodedItem = decodeURI(request.params.item);
+    if(validateSearchItem(decodedItem)){
         new sql.Request()
         .input('item', sql.VarChar(50), request.params.item)
         .execute('sp_GetImagesByLabelSearch', (error, result) => {
@@ -383,7 +391,7 @@ const getImagesByLabelSearch = (request, response) => {
         })
     }
     else {
-        return response.json({ status: "ERROR"});
+        return response.json({ status: "Invalid text"});
     }       
 }
 
@@ -399,7 +407,7 @@ const getImagesByTechnique = (request, response) => {
         })
     }
     else {
-        return response.json({ status: "ERROR"});
+        return response.json({ status: "Invalid text"});
     }       
 }
 
@@ -419,8 +427,8 @@ function validateBPINumber(BPI_number){
 //validate item
 function validateSearchItem(item) {
 try {
-    const isAlpha = str => /^[a-zA-Z]*$/.test(str);
-    if(!isAlpha(item) || item.length <= 3 || item.length > 50) {
+    const isAlphaWithWhitespace = str => /^[a-zA-Z\s']*$/.test(str);
+    if(!isAlphaWithWhitespace(item) || item.length <= 3 || item.length > 50) {
         return false;
     }
     return true;
