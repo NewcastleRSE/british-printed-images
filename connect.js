@@ -240,7 +240,7 @@ const getImageLocation = (request, response) => {
     if(validateBPINumber(request.params.id)){
         new sql.Request()
         .input('id', sql.Int, request.params.id)
-        .execute('sp_GetAllImageLocation', (error, result) => {
+        .execute('sp_GetImageLocation', (error, result) => {
             if(error){
                 return response.json({ status: "ERROR", error });
             }
