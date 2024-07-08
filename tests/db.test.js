@@ -275,7 +275,7 @@ describe("Test case for item validation", () => {
   it("test case for item that's too short", async () => {
     const response = await request(app).get("/api/image_subject_search/ab");
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({"status": "ERROR"});
+    expect(response.body).toEqual({"status": "Invalid text"});
   }
   ); 
 });
@@ -285,7 +285,7 @@ describe("Test case for item validation", () => {
   it("test case for bpi item that's too long", async () => {
     const response = await request(app).get("/api/image_subject_search/osjfosfodkfdokgdgkdqegyeywgewygeywywrfdkxbfishfiushfushfushfushfussudsfnsofoshfkdoudrhiufidrfiuerhr");
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({"status": "ERROR"});
+    expect(response.body).toEqual({"status": "Invalid text"});
   }
   ); 
 });
@@ -295,7 +295,7 @@ describe("Test case for item validation", () => {
   it("test case for bpi item that's not alpha only", async () => {
     const response = await request(app).get("/api/image_subject_search/485utrjt046");
     expect(response.status).toBe(200);
-    expect(response.body).toEqual({"status": "ERROR"});
+    expect(response.body).toEqual({"status": "Invalid text"});
   }
   ); 
 });
