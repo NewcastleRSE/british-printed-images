@@ -3,7 +3,7 @@
 ## About
 
 
-Brtish Printed Images is a rebuild of a legacy website at ([https://bpi1700.org.uk/](https://bpi1700.org.uk/)). The site is digital library of prints and book illustrations from Early Modern Britain, with images ranging from 1550 to 1815. The site allows searching by BPI number, subject, event, person and producer. The BPI number is an internal classfication system that has no links to other digital libraries. 
+Brtish Printed Images is a rebuild of a legacy website ([https://bpi1700.org.uk/](https://bpi1700.org.uk/)). The site is digital library of prints and book illustrations from Early Modern Britain, with images ranging from 1550 to 1815. The site allows searching by BPI number, subject, person and producer/printmaker and technique. The BPI number is an internal classfication system that has no links to other digital libraries. 
 
 ### Project Team
 Adam Morton, Newcastle University  ([adam.morton@newcastle.ac.uk](mailto:adam.morton@newcastle.ac.uk))  
@@ -18,13 +18,14 @@ Newcastle University
 
 ## Built With
 
-[Express](https://expressjs.com/)  
+[Express](https://expressjs.com/) 
+[Vue](https://vuejs.org/) 
 
 The database is a sqlserver database hosted on Azure, under the subscription 'british-printed-images'.
 
 ## Getting Started
 
-The application is built using Express.js and will run on Node 18, 21. 
+The application is built using Express.js and will run on Node 18, 21. The client is build in Vue.js.
 
 ### Prerequisites
 
@@ -53,7 +54,7 @@ Start the server running with `node app.js`. This starts the application running
 
 ### Running Tests
 
-Jest has been used as the test library. Execute database tests with the command below. The tests connect to the live database, so it may be necessary to whitelist an IP through Azure bfreo the tests will run.
+Jest has been used as the test library. Execute database tests with the command below. The tests connect to the live database, so it may be necessary to whitelist an IP through Azure before the tests will run.
 
 `npm test`
 
@@ -65,8 +66,8 @@ The two parts of the application need to be brought togther as one code base. Th
 
 - [x] Initial Research  
 - [x] Minimum viable product   
-- [ ] Alpha Release  
-- [ ] Feature-Complete Release  
+- [x] Alpha Release  
+- [x] Feature-Complete Release  
 
 ## Contributing
 
