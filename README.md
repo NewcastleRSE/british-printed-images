@@ -19,13 +19,12 @@ Newcastle University
 ## Built With
 
 [Express](https://expressjs.com/) 
-[Vue](https://vuejs.org/) 
 
 The database is a sqlserver database hosted on Azure, under the subscription 'british-printed-images'.
 
 ## Getting Started
 
-The application is built using Express.js and will run on Node 18, 21. The client is build in Vue.js.
+The application is built using Express.js and will run on Node 18, 20. The client is build in Vue.js.
 
 ### Prerequisites
 
