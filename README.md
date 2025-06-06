@@ -24,7 +24,7 @@ The database is a sqlserver database hosted on Azure, under the subscription 'br
 
 ## Getting Started
 
-The application is built using Express.js and will run on Node 18, 20. The client is build in Vue.js.
+The application is built using Express.js and will run on Node 18, 20, 22. The client is build in Vue.js.
 
 ### Prerequisites
 
