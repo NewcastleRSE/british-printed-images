@@ -24,11 +24,11 @@ The database is a sqlserver database hosted on Azure, under the subscription 'br
 
 ## Getting Started
 
-The application is built using Express.js and will run on Node 18, 20, 22. The client is build in Vue.js.
+The application is built using Express.js and will run on 20, 22, 24. The client is build in Vue.js.
 
 ### Prerequisites
 
-Node.js
+Node.js (Updated to Node LTS 24 in Azure App Service)
 Express
 
 ### Installation
@@ -49,7 +49,7 @@ DB_PORT=
 
 These will connect to the live Azure database.
 
-Start the server running with `node app.js`. This starts the application running on localhost:3000. The client repo is at: [bpi-vue-client](https://github.com/NewcastleRSE/bpi-vue-client), and is Vue.js application which will run on localhost:8080. 
+Start the server running with `node app.js`. This starts the application running on localhost:3000. The application will need to connect to the Azure hosted SQL database (sql-bpi-prod-uksouth-001) so you may need to add your local IP to the DB networking settings. The client repo is at: [bpi-vue-client](https://github.com/NewcastleRSE/bpi-vue-client), and is Vue.js application which will run on localhost:8080. 
 
 ### Running Tests
 
